@@ -1,2 +1,2 @@
-# Documentaci-nP2P
+# DocumentacionP2P
 Este repositorio se usara para almacenar la documentación del proceso de implementación
