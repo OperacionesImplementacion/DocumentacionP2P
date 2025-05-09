@@ -1,0 +1,76 @@
+{
+	"info": {
+		"_postman_id": "cacf32b3-b29f-4ad2-bf6e-a17d05853195",
+		"name": "Webcheckout Reverso & Reembolso",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12520843"
+	},
+	"item": [
+		{
+			"name": "Partial Refund",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"auth\": {\r\n        \"login\": \"\",\r\n        \"tranKey\": \"\",\r\n        \"nonce\": \"\",\r\n        \"seed\": \"\"\r\n    },\r\n    \"internalReference\": 1598938925,\r\n    \"amount\": {\r\n        \"currency\": \"USD\",\r\n        \"total\": 1\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://checkout-test.placetopay.com/api/reverse",
+					"protocol": "https",
+					"host": [
+						"checkout-test",
+						"placetopay",
+						"com"
+					],
+					"path": [
+						"api",
+						"reverse"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refund & Reverse",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"auth\": {\r\n        \"login\": \"\",\r\n        \"tranKey\": \"\",\r\n        \"nonce\": \"\",\r\n        \"seed\": \"\"\r\n    },\r\n    \"internalReference\": 1598939439\r\n}\r\n\r\n// Se hace el reembolso cuando la transacción supera la hora de corte de la red procesadora para PR es a las 3 PM ",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://checkout-test.placetopay.com/api/reverse",
+					"protocol": "https",
+					"host": [
+						"checkout-test",
+						"placetopay",
+						"com"
+					],
+					"path": [
+						"api",
+						"reverse"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
