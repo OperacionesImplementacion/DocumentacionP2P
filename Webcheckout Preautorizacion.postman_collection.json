@@ -1,0 +1,109 @@
+{
+	"info": {
+		"_postman_id": "e5e81169-d420-4b0b-8dd3-7b8371e387e1",
+		"name": "Webcheckout Preautorizacion",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12520843"
+	},
+	"item": [
+		{
+			"name": "Checkin",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"auth\": {\r\n        \"login\": \"\",\r\n        \"tranKey\": \"\",\r\n        \"nonce\": \"\",\r\n        \"seed\": \"\"\r\n    },\r\n    \"buyer\": {\r\n        \"document\": \"100000000\",\r\n        \"documentType\": \"PPN\",\r\n        \"name\": \"name\",\r\n        \"surname\": \"surname\",\r\n        \"company\": \"Placetopay\",\r\n        \"email\": \"test@gmail.com\",\r\n        \"mobile\": 3006108300,\r\n        \"address\": {\r\n            \"street\": \"40210 Toy Gardens\",\r\n            \"city\": \"Breitenbergmouth\",\r\n            \"state\": \"Antioquia\",\r\n            \"postalCode\": \"36945-2263\",\r\n            \"country\": \"COL\",\r\n            \"phone\": \"+604 (555) 555-5555\"\r\n        }\r\n    },\r\n    \"type\": \"checkin\",\r\n    \"payment\": {\r\n        \"reference\": \"Test4\",\r\n        \"description\": \"Prueba.\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 10\r\n        }\r\n    },\r\n    \"returnUrl\": \"https://google.com/\",\r\n    \"ipAddress\": \"127.0.0.1\",\r\n    \"userAgent\": \"PlacetoPay Sandbox\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://checkout-test.placetopay.com/api/session",
+					"protocol": "https",
+					"host": [
+						"checkout-test",
+						"placetopay",
+						"com"
+					],
+					"path": [
+						"api",
+						"session"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Checkout",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"auth\": {\r\n        \"login\": \"\",\r\n        \"tranKey\": \"\",\r\n        \"nonce\": \"\",\r\n        \"seed\": \"\"\r\n    },\r\n    \"internalReference\": 1598939506,\r\n    \"amount\": {\r\n        \"currency\": \"USD\",\r\n        \"total\": 10\r\n    },\r\n    \"action\": \"checkout\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://checkout-test.placetopay.com/api/transaction",
+					"protocol": "https",
+					"host": [
+						"checkout-test",
+						"placetopay",
+						"com"
+					],
+					"path": [
+						"api",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Reautorización",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"auth\": {\r\n        \"login\": \"\",\r\n        \"tranKey\": \"\",\r\n        \"nonce\": \"\",\r\n        \"seed\": \"\"\r\n    },\r\n    \"internalReference\": 159893506,\r\n    \"amount\": {\r\n        \"currency\": \"USD\",\r\n        \"total\": 15\r\n    },\r\n    \"action\": \"reauthorization\"\r\n}\r\n//No funciona actualmente para PR",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://checkout-test.placetopay.com/api/transaction",
+					"protocol": "https",
+					"host": [
+						"checkout-test",
+						"placetopay",
+						"com"
+					],
+					"path": [
+						"api",
+						"transaction"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
