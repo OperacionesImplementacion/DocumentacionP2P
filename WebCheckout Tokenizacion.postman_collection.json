@@ -1,0 +1,209 @@
+{
+	"info": {
+		"_postman_id": "eb4ab7f6-512d-4c50-9fa4-fe04ad6a0a0b",
+		"name": "WebCheckout Tokenizacion",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12520843"
+	},
+	"item": [
+		{
+			"name": "Subscription",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"auth\": {\r\n        \"login\": \"\",\r\n        \"tranKey\": \"\",\r\n        \"nonce\": \"\",\r\n        \"seed\": \"\"\r\n    },\r\n    \"buyer\": {\r\n        \"document\": \"100000000\",\r\n        \"documentType\": \"PPN\",\r\n        \"name\": \"name\",\r\n        \"surname\": \"surname\",\r\n        \"company\": \"Placetopay\",\r\n        \"email\": \"test@gmail.com\",\r\n        \"mobile\": 3006108300,\r\n        \"address\": {\r\n            \"street\": \"40210 Toy Gardens\",\r\n            \"city\": \"Breitenbergmouth\",\r\n            \"state\": \"Antioquia\",\r\n            \"postalCode\": \"36945-2263\",\r\n            \"country\": \"COL\",\r\n            \"phone\": \"+604 (555) 555-5555\"\r\n        }\r\n    },\r\n    \"subscription\": {\r\n        \"reference\": \"3110\",\r\n        \"description\": \"A trial subscription\"\r\n    },\r\n    \"returnUrl\": \"https://google.com/\",\r\n    \"ipAddress\": \"127.0.0.1\",\r\n    \"userAgent\": \"PlacetoPay Sandbox\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://checkout-test.placetopay.com/api/session",
+					"protocol": "https",
+					"host": [
+						"checkout-test",
+						"placetopay",
+						"com"
+					],
+					"path": [
+						"api",
+						"session"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Subscription True",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"auth\": {\r\n        \"login\": \"\",\r\n        \"tranKey\": \"\",\r\n        \"nonce\": \"\",\r\n        \"seed\": \"\"\r\n    },\r\n    \"buyer\": {\r\n        \"document\": \"100000000\",\r\n        \"documentType\": \"PPN\",\r\n        \"name\": \"name\",\r\n        \"surname\": \"surname\",\r\n        \"company\": \"Placetopay\",\r\n        \"email\": \"test@gmail.com\",\r\n        \"mobile\": 3006108300,\r\n        \"address\": {\r\n            \"street\": \"40210 Toy Gardens\",\r\n            \"city\": \"Breitenbergmouth\",\r\n            \"state\": \"Antioquia\",\r\n            \"postalCode\": \"36945-2263\",\r\n            \"country\": \"COL\",\r\n            \"phone\": \"+604 (555) 555-5555\"\r\n        }\r\n    },\r\n    \"payment\": {\r\n        \"reference\": \"1234tst\",\r\n        \"description\": \"Test\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 10\r\n        },\r\n        \"subscribe\": true //Solo devuelve el token cuando el user guarda la tarjeta en la wallet de Placetopay\r\n    },\r\n    \"returnUrl\": \"https://google.com/\",\r\n    \"ipAddress\": \"127.0.0.1\",\r\n    \"userAgent\": \"PlacetoPay Sandbox\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://checkout-test.placetopay.com/api/session",
+					"protocol": "https",
+					"host": [
+						"checkout-test",
+						"placetopay",
+						"com"
+					],
+					"path": [
+						"api",
+						"session"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Invalidate Token",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"auth\": {\r\n        \"login\": \"\",\r\n        \"tranKey\": \"\",\r\n        \"nonce\": \"\",\r\n        \"seed\": \"\"\r\n    },\r\n    \"instrument\": {\r\n        \"token\": {\r\n            \"token\": \"1234567890ASDFGHJK\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://checkout-test.placetopay.com/api/instrument/invalidate",
+					"protocol": "https",
+					"host": [
+						"checkout-test",
+						"placetopay",
+						"com"
+					],
+					"path": [
+						"api",
+						"instrument",
+						"invalidate"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Collect",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"auth\": {\r\n        \"login\": \"\",\r\n        \"tranKey\": \"\",\r\n        \"nonce\": \"\",\r\n        \"seed\": \"\"\r\n    },\r\n    \"payer\": {\r\n        \"document\": \"100000000\",\r\n        \"documentType\": \"PPN\",\r\n        \"name\": \"Juan\",\r\n        \"surname\": \"Serna\",\r\n        \"email\": \"test@gmail.com\",\r\n        \"mobile\": \"+573006108300\"\r\n    },\r\n    \"buyer\": {\r\n        \"document\": \"100000000\",\r\n        \"documentType\": \"PPN\",\r\n        \"name\": \"name\",\r\n        \"surname\": \"surname\",\r\n        \"company\": \"Placetopay\",\r\n        \"email\": \"test@gmail.com\",\r\n        \"mobile\": 3006108300,\r\n        \"address\": {\r\n            \"street\": \"40210 Toy Gardens\",\r\n            \"city\": \"Breitenbergmouth\",\r\n            \"state\": \"Antioquia\",\r\n            \"postalCode\": \"36945-2263\",\r\n            \"country\": \"COL\",\r\n            \"phone\": \"+604 (555) 555-5555\"\r\n        }\r\n    },\r\n    \"payment\": {\r\n        \"reference\": \"123456789987654321\",\r\n        \"description\": \"Reference\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 1\r\n        }\r\n    },\r\n    \"instrument\": {\r\n        \"token\": {\r\n            \"token\": \"1234567890ASDFGHJK\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://checkout-test.placetopay.com/api/collect",
+					"protocol": "https",
+					"host": [
+						"checkout-test",
+						"placetopay",
+						"com"
+					],
+					"path": [
+						"api",
+						"collect"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Collect Checkin",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"auth\": {\r\n        \"login\": \"\",\r\n        \"tranKey\": \"\",\r\n        \"nonce\": \"\",\r\n        \"seed\": \"\"\r\n    },\r\n    \"payer\": {\r\n        \"document\": \"100000000\",\r\n        \"documentType\": \"PPN\",\r\n        \"name\": \"name\",\r\n        \"surname\": \"surname\",\r\n        \"company\": \"Placetopay\",\r\n        \"email\": \"test@gmail.com\",\r\n        \"mobile\": 3006108300,\r\n        \"address\": {\r\n            \"street\": \"40210 Toy Gardens\",\r\n            \"city\": \"Breitenbergmouth\",\r\n            \"state\": \"Antioquia\",\r\n            \"postalCode\": \"36945-2263\",\r\n            \"country\": \"COL\",\r\n            \"phone\": \"+604 (555) 555-5555\"\r\n        }\r\n    },\r\n    \"buyer\": {\r\n        \"document\": \"100000000\",\r\n        \"documentType\": \"PPN\",\r\n        \"name\": \"name\",\r\n        \"surname\": \"surname\",\r\n        \"company\": \"Placetopay\",\r\n        \"email\": \"test@gmail.com\",\r\n        \"mobile\": 3006108300,\r\n        \"address\": {\r\n            \"street\": \"40210 Toy Gardens\",\r\n            \"city\": \"Breitenbergmouth\",\r\n            \"state\": \"Antioquia\",\r\n            \"postalCode\": \"36945-2263\",\r\n            \"country\": \"COL\",\r\n            \"phone\": \"+604 (555) 555-5555\"\r\n        }\r\n    },\r\n    \"type\": \"checkin\",\r\n    \"payment\": {\r\n        \"reference\": \"Test4\",\r\n        \"description\": \"Prueba.\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 10\r\n        }\r\n    },\r\n    \"instrument\": {\r\n        \"token\": {\r\n            \"token\": \"1234567890ASDFGHJK\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://checkout-test.placetopay.com/api/collect",
+					"protocol": "https",
+					"host": [
+						"checkout-test",
+						"placetopay",
+						"com"
+					],
+					"path": [
+						"api",
+						"collect"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Collect Dispersión merchant",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"auth\": {\r\n        \"login\": \"\",\r\n        \"tranKey\": \"\",\r\n        \"nonce\": \"\",\r\n        \"seed\": \"\"\r\n    },\r\n    \"payer\": {\r\n        \"document\": \"100000000\",\r\n        \"documentType\": \"PPN\",\r\n        \"name\": \"name\",\r\n        \"surname\": \"surname\",\r\n        \"company\": \"Placetopay\",\r\n        \"email\": \"test@gmail.com\",\r\n        \"mobile\": 3006108300,\r\n        \"address\": {\r\n            \"street\": \"40210 Toy Gardens\",\r\n            \"city\": \"Breitenbergmouth\",\r\n            \"state\": \"Antioquia\",\r\n            \"postalCode\": \"36945-2263\",\r\n            \"country\": \"COL\",\r\n            \"phone\": \"+604 (555) 555-5555\"\r\n        }\r\n    },\r\n    \"buyer\": {\r\n        \"document\": \"100000000\",\r\n        \"documentType\": \"PPN\",\r\n        \"name\": \"name\",\r\n        \"surname\": \"surname\",\r\n        \"company\": \"Placetopay\",\r\n        \"email\": \"test@gmail.com\",\r\n        \"mobile\": 3006108300,\r\n        \"address\": {\r\n            \"street\": \"40210 Toy Gardens\",\r\n            \"city\": \"Breitenbergmouth\",\r\n            \"state\": \"Antioquia\",\r\n            \"postalCode\": \"36945-2263\",\r\n            \"country\": \"COL\",\r\n            \"phone\": \"+604 (555) 555-5555\"\r\n        }\r\n    },\r\n    \"payment\": {\r\n        \"reference\": \"123456789987654321\",\r\n        \"description\": \"Reference\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 100\r\n        },\r\n        \"dispersion\": [\r\n            {\r\n                \"agreement\": \"191\",\r\n                \"agreementType\": \"MERCHANT\",\r\n                \"amount\": {\r\n                    \"currency\": \"USD\",\r\n                    \"total\": 60\r\n                }\r\n            },\r\n            {\r\n                \"agreement\": \"\",\r\n                \"agreementType\": \"MERCHANT\",\r\n                \"amount\": {\r\n                    \"currency\": \"USD\",\r\n                    \"total\": 40\r\n                }\r\n            }\r\n        ]\r\n    },\r\n    \"instrument\": {\r\n        \"token\": {\r\n            \"token\": \"1234567890ASDFGHJK\"\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://checkout-test.placetopay.com/api/collect",
+					"protocol": "https",
+					"host": [
+						"checkout-test",
+						"placetopay",
+						"com"
+					],
+					"path": [
+						"api",
+						"collect"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
