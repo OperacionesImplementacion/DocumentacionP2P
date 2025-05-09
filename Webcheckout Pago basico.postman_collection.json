@@ -1,0 +1,74 @@
+{
+	"info": {
+		"_postman_id": "e816cce3-fb5c-4235-869c-7ab0724d125a",
+		"name": "Webcheckout Pago basico",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12520843"
+	},
+	"item": [
+		{
+			"name": "Create request",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"locale\": \"es_CO\",\r\n    \"auth\": {\r\n        \"login\": \"\",\r\n        \"tranKey\": \"\",\r\n        \"nonce\": \"\",\r\n        \"seed\": \"\"\r\n    },\r\n    \"buyer\": {\r\n        \"name\": \"name\",\r\n        \"surname\": \"surname\",\r\n        \"company\": \"Placetopay\",\r\n        \"email\": \"test@gmail.com\",\r\n        \"mobile\": 3006108300,\r\n        \"address\": {\r\n            \"street\": \"40210 Toy Gardens\",\r\n            \"city\": \"Breitenbergmouth\",\r\n            \"state\": \"Antioquia\",\r\n            \"postalCode\": \"36945-2263\",\r\n            \"country\": \"COL\",\r\n            \"phone\": \"+604 (555) 555-5555\"\r\n        }\r\n    },\r\n    \"payment\": {\r\n        \"reference\": \"payment_reference\",\r\n        \"description\": \"Description of the payment\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 12\r\n        }\r\n    },\r\n    \"returnUrl\": \"https://google.com\",\r\n    \"ipAddress\": \"127.0.0.1\",\r\n    \"userAgent\": \"PlacetoPay Sandbox\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://checkout-test.placetopay.com/api/session",
+					"protocol": "https",
+					"host": [
+						"checkout-test",
+						"placetopay",
+						"com"
+					],
+					"path": [
+						"api",
+						"session"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get request Information",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"auth\": {\r\n        \"login\": \"\",\r\n        \"tranKey\": \"\",\r\n        \"nonce\": \"\",\r\n        \"seed\": \"\"\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://checkout-test.placetopay.com/api/session/(RequestIDnumber)",
+					"protocol": "https",
+					"host": [
+						"checkout-test",
+						"placetopay",
+						"com"
+					],
+					"path": [
+						"api",
+						"session",
+						"(RequestIDnumber)"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
