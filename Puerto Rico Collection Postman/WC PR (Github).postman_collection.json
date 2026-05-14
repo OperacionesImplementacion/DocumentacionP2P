@@ -1,0 +1,1085 @@
+{
+  "info": {
+    "_postman_id": "95c977dc-127c-4f9b-b679-5ed589e79215",
+    "name": "WC PR (Github)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "14677298"
+  },
+  "item": [
+    {
+      "name": "Pago basico",
+      "item": [
+        {
+          "name": "createRequest",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Source-Platform",
+                "value": "microsites"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"buyer\": {\r\n        \"name\": \"test\",\r\n        \"surname\": \"test\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\"\r\n    },\r\n    \"locale\": \"es_PR\",\r\n    \"payment\": {\r\n        \"reference\": \"Test {{$randomAlphaNumeric}}\",\r\n        \"description\": \"Pago contrato 20260226\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": \"1\"\r\n        },\r\n        //\"allowPartial\": true\r\n        \"subscribe\": true\r\n    },\r\n    \"fields\": [\r\n        {\r\n            \"keyword\": \"CustomerAccountNumber\",\r\n            \"value\": \"08885b5912d82d294dc43c8fd4697a1429ef0b805541255120\",\r\n            \"displayOn\": \"none\"\r\n        },\r\n        {\r\n            \"keyword\": \"MerchantUniqueId\",\r\n            \"value\": \"08885b59\",\r\n            \"displayOn\": \"both\"\r\n        }\r\n        /*{\r\n            \"keyword\": \"Filler2\",\r\n            \"value\": \"08885b5912d82d294dc43c8fd4697a1429ef0b805541255120ujdhnbdbnjhsfbvfjhkvnfdckvnb fdbvidkbvifdhbvjkbvidbfkfjhbvbvkjhfdbvkfbvkfdbvkfdbvdfsaaaaaffdfdsfsfsfsfsfsfsfsfsfsdfsdfsdfdsfsddsdsfsdfsdfsdfsdsdfsdfsdfsdfdsffddfsdsfddfdfsfsfsfssfdfdfddsfdsfddsffdddffsddss\",\r\n            \"displayOn\": \"both\"\r\n        },\r\n        {\r\n            \"keyword\": \"Filler3\",\r\n            \"value\": \"c43c8fd4697a1429\",\r\n            \"displayOn\": \"both\"\r\n        }*/\r\n    ],\r\n    \"expiration\": {{exp}},\r\n    //\"paymentMethod\": \"visa\",\r\n    \"skipResult\": true,\r\n    \"returnUrl\": \"https://google.com\",\r\n    \"ipAddress\": \"127.0.0.12\",\r\n    \"userAgent\": \"Postman Agent\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/session/",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "session",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Information",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Source-Platform",
+                "value": "plugin",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"buyer\": {\r\n        \"name\": \"test\",\r\n        \"surname\": \"test\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\"\r\n    },\r\n    \"locale\": \"es_PR\",\r\n    \"payment\": {\r\n        \"reference\": \"Test {{$randomAlphaNumeric}}\",\r\n        \"description\": \"Pago test PR\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": \"10\"\r\n        }\r\n    },\r\n    \"instrument\": {\r\n        \"card\":{\r\n            \"number\": \"4111111111111111\"\r\n        }\r\n        /*\"token\":{\r\n            \"token\": \"39ea9dbc751b8f0ac1a490dd2ba6257c058fa9980ee4c0a45b7ebf21accbdf8c\"\r\n        }*/\r\n    },\r\n    \"ipAddress\": \"127.0.0.12\",\r\n    \"userAgent\": \"Postman Agent\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_prod}}/api/gateway/information",
+              "host": [
+                "{{url_prod}}"
+              ],
+              "path": [
+                "api",
+                "gateway",
+                "information"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "createRequest details",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Source-Platform",
+                "value": "plugin",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"payment\": {\r\n        \"reference\": \"4809963\",\r\n        \"description\": \"INVOICE PAYMENTS\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 5\r\n        },\r\n        \"items\": [\r\n            {\r\n                \"sku\": \"Invoice\",\r\n                \"name\": \"155261225\",\r\n                \"price\": 9\r\n            }\r\n        ]\r\n    },\r\n    \"ipAddress\": \"190.236.14.221\",\r\n    \"userAgent\": \"mozilla/5.0 (macintosh; intel mac os x 10_15_7) applewebkit/537.36 (khtml, like gecko) chrome/134.0.0.0 safari/537.36\",\r\n    \"expiration\": {{exp}},\r\n    \"skipResult\": false,\r\n    \"returnUrl\": \"https://google.com\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/session/",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "session",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "createRequest IVA",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Source-Platform",
+                "value": "plugin",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\": {{auth}},\r\n   \"locale\":\"es_PR\",\r\n    \"payment\": {\r\n        \"reference\": \"Test {{$randomAlphaNumeric}}\",\r\n        \"description\": \"Payment with IVU\",\r\n        \"amount\": {\r\n                    \"taxes\": [\r\n                {\r\n                    \"kind\": \"stateTax\",\r\n                    \"amount\": 1.05\r\n                }\r\n            ],\r\n            \"currency\": \"USD\",\r\n            \"total\": 10\r\n        }\r\n      },\r\n    \"expiration\": {{exp}},\r\n    \"returnUrl\": \"https://google.com\",\r\n    \"skipResult\": false,\r\n    \"ipAddress\": \"127.0.0.12\",\r\n    \"userAgent\": \"Postman Agent\"\r\n    }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/session/",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "session",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getRequestInformation",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\": {{auth}}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/session/3695005",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "session",
+                "3695005"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "reversePayment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"internalReference\": 1599288747,\r\n    \"authorization\": \"1599301668\",\r\n    \"action\": \"reverse\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/transaction",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "transaction"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "PreAuth",
+      "item": [
+        {
+          "name": "Checkin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Source-Platform",
+                "value": "plugin",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"buyer\": {\r\n        \"name\": \"test\",\r\n        \"surname\": \"test\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\"\r\n    },\r\n    \"locale\": \"es_PR\",\r\n    \"type\": \"checkin\",\r\n    \"payment\": {\r\n        \"reference\": \"Test {{$randomAlphaNumeric}}\",\r\n        \"description\": \"Pago test Preauth\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": \"10\"\r\n        }\r\n    },\r\n    \"expiration\": {{exp}},\r\n    \"skipResult\": false,\r\n    \"returnUrl\": \"https://google.com\",\r\n    \"ipAddress\": \"127.0.0.12\",\r\n    \"userAgent\": \"Postman Agent\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/session/",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "session",
+                ""
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Checkout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"internalReference\": 1599285210,\r\n    \"amount\": {\r\n        \"currency\": \"USD\",\r\n        \"total\": 10\r\n    },\r\n    \"action\": \"checkout\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/transaction",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "transaction"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getRequestInformation",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\": {{auth}}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/session/3399861",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "session",
+                "3399861"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "reversePayment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\": {{auth}},\r\n    \"internalReference\": \"28450\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/reverse",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "reverse"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Mixto",
+      "item": [
+        {
+          "name": "createRequest",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\": {{auth}},\r\n    \"locale\": \"es_CL\",\r\n    \"buyer\": {\r\n      \"name\": \"MANUELA\",\r\n      \"surname\": \"ARBELAEZ\",\r\n      \"email\": \"pruebasmanu123@gmail.com\",\r\n      \"document\": \"11.257.843-9\",\r\n      \"documentType\": \"CLRUT\",\r\n      \"mobile\": 3006108300\r\n  },\r\n    \"payment\": {\r\n        \"reference\": \"3210\",\r\n        \"description\": \"Basic payment suscription\",\r\n        \"amount\": {\r\n            \"currency\": \"CLP\",\r\n            \"total\": \"2100\"\r\n        },\r\n      \"allowPartial\": true\r\n      },\r\n\r\n    \"expiration\": \"2021-08-12T22:27:01+07:00\",\r\n    \"returnUrl\": \"http://localhost/wc/returnUrl.php/3210\",\r\n    \"ipAddress\": \"127.0.0.1\",\r\n    \"userAgent\": \"Postman Agent\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://checkout-getnet-cl.placetopay.com/api/session",
+              "protocol": "https",
+              "host": [
+                "checkout-getnet-cl",
+                "placetopay",
+                "com"
+              ],
+              "path": [
+                "api",
+                "session"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getRequestInformation",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\": {{auth}}\r\n}"
+            },
+            "url": {
+              "raw": "https://cl-uat-checkout.placetopay.com/api/session/1601",
+              "protocol": "https",
+              "host": [
+                "cl-uat-checkout",
+                "placetopay",
+                "com"
+              ],
+              "path": [
+                "api",
+                "session",
+                "1601"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "reversePayment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\": {{auth}},\r\n    \"internalReference\": \"918\"\r\n}"
+            },
+            "url": {
+              "raw": "https://cl-uat-checkout.placetopay.com/api/reverse",
+              "protocol": "https",
+              "host": [
+                "cl-uat-checkout",
+                "placetopay",
+                "com"
+              ],
+              "path": [
+                "api",
+                "reverse"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Recurrencia",
+      "item": [
+        {
+          "name": "createRequest",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\": {{auth}},\r\n    \"locale\": \"es_PR\",\r\n    \"buyer\": {\r\n      \"name\": \"test\",\r\n      \"surname\": \"test\",\r\n      \"email\": \"inte.p2p.pruebas@gmail.com\",\r\n      \"mobile\": 3006108300\r\n  },\r\n    \"payment\": {\r\n        \"reference\": \"test recurring {{$randomAlphaNumeric}}\",\r\n        \"description\": \"Basic payment recurrent\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": \"1\"\r\n        },\r\n           \"recurring\": {\r\n            \"periodicity\": \"D\",\r\n            \"interval\": \"1\",\r\n            \"maxPeriods\": \"3\"\r\n        },\r\n        \"notificationUrl\": \"https://dnetix.co/ping/test8\" \r\n      },\r\n    \"expiration\": {{exp}},\r\n    \"returnUrl\": \"http://localhost/wc/returnUrl.php/3210\",\r\n    \"ipAddress\": \"127.0.0.1\",\r\n    \"userAgent\": \"Postman Agent\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/session",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "session"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getRequestInformation",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\": {{auth}}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/session/40109",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "session",
+                "40109"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "reversePayment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\": {{auth}},\r\n    \"internalReference\": \"921\"\r\n}"
+            },
+            "url": {
+              "raw": "https://cl-uat-checkout.placetopay.com/api/reverse",
+              "protocol": "https",
+              "host": [
+                "cl-uat-checkout",
+                "placetopay",
+                "com"
+              ],
+              "path": [
+                "api",
+                "reverse"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Autopay",
+      "item": [
+        {
+          "name": "createRequest (FIXED)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"locale\": \"es_PR\",\r\n    \"type\": \"autopay\",\r\n    \"autopay\": {\r\n        \"action\": \"CREATE\",\r\n        \"reference\": \"Test_20260304\",\r\n        \"description\": \"Inscripción autopago monto fijo\",\r\n        \"dueDay\": 15,\r\n        \"recurring\": {\r\n            \"type\": \"FIXED\",\r\n            \"periodicity\": \"M\",\r\n            \"interval\": 1,\r\n            \"nextPayment\": \"2026-03-20\",\r\n            \"dueDate\": \"2026-03-22\"\r\n        },\r\n        \"notificationUrl\": \"https://dnetix.co/ping/test8\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 1\r\n        }\r\n    },\r\n    \"returnUrl\": \"https://docs.placetopay.dev/checkout/api/reference/session/\",\r\n    \"ipAddress\": \"127.0.0.1\",\r\n    \"userAgent\": \"PlacetoPay Sandbox\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/session",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "session"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "createRequest (TOTAL)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "    {\r\n    \"auth\": {{auth}},\r\n    \"type\": \"autopay\",\r\n    \"autopay\": {\r\n      \"action\": \"CREATE\",\r\n      \"reference\": \"12345\",\r\n      \"description\": \"Inscripción autopago monto fijo\",\r\n      \"dueDay\": 15,\r\n      \"recurring\": {\r\n        \"type\": \"TOTAL_BALANCE\",\r\n        \"periodicity\": \"M\",\r\n        \"interval\": 1,\r\n        \"nextPayment\": \"2026-02-28\",\r\n        \"dueDate\": \"2027-11-26\"\r\n      }\r\n    },\r\n    \"returnUrl\": \"https://docs.placetopay.dev/checkout/api/reference/session/\",\r\n    \"ipAddress\": \"127.0.0.1\",\r\n    \"userAgent\": \"PlacetoPay Sandbox\"\r\n  }\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/session",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "session"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "createRequest (MINIMUM)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "    {\r\n    \"auth\": {{auth}},\r\n    \"type\": \"autopay\",\r\n    \"autopay\": {\r\n      \"action\": \"CREATE\",\r\n      \"reference\": \"12345\",\r\n      \"description\": \"Inscripción autopago monto fijo\",\r\n      \"dueDay\": 15,\r\n      \"recurring\": {\r\n        \"type\": \"MINIMUM_BALANCE\",\r\n        \"periodicity\": \"M\",\r\n        \"interval\": 1,\r\n        \"nextPayment\": \"2026-02-28\",\r\n        \"dueDate\": \"2027-11-26\"\r\n      }\r\n    },\r\n    \"returnUrl\": \"https://docs.placetopay.dev/checkout/api/reference/session/\",\r\n    \"ipAddress\": \"127.0.0.1\",\r\n    \"userAgent\": \"PlacetoPay Sandbox\"\r\n  }\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/session",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "session"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "createRequest (EDIT)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"type\": \"autopay\",\r\n    \"autopay\": {\r\n      \"action\": \"EDIT\",\r\n      \"reference\": \"12345\",\r\n      \"description\": \"Inscripción autopago monto fijo\",\r\n      \"id\": \"a357abab-7930-444f-a509-6087a06f66da\"\r\n    },\r\n    \"returnUrl\": \"https://merchant.test/return\",\r\n    \"ipAddress\": \"127.0.0.1\",\r\n    \"userAgent\": \"PlacetoPay Sandbox\"\r\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_prod}}/api/session",
+              "host": [
+                "{{url_prod}}"
+              ],
+              "path": [
+                "api",
+                "session"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getRequestInformation",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\": {{auth}}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_prod}}/api/session/240284898",
+              "host": [
+                "{{url_prod}}"
+              ],
+              "path": [
+                "api",
+                "session",
+                "240284898"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "reversePayment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\": {{auth}},\r\n    \"internalReference\": \"921\"\r\n}"
+            },
+            "url": {
+              "raw": "https://cl-uat-checkout.placetopay.com/api/reverse",
+              "protocol": "https",
+              "host": [
+                "cl-uat-checkout",
+                "placetopay",
+                "com"
+              ],
+              "path": [
+                "api",
+                "reverse"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Information session Autopay",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"auth\":{{auth}}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.placetopay.com/autopay/session/240222848",
+              "protocol": "https",
+              "host": [
+                "api",
+                "placetopay",
+                "com"
+              ],
+              "path": [
+                "autopay",
+                "session",
+                "240222848"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Cancel Autopay",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"id\": \"ac916068-5785-4695-b0c0-6dc996b66ac4\",\r\n    \"locale\": \"es_PR\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.placetopay.com/autopay/cancel",
+              "protocol": "https",
+              "host": [
+                "api",
+                "placetopay",
+                "com"
+              ],
+              "path": [
+                "autopay",
+                "cancel"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Information Autopay",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n   \"auth\":{{auth}},\r\n       \"filters\": {\r\n        //\"reference\": \"PAYMENT_1\",\r\n        //\"id\": \"328eb09a-363f-48a6-a16e-51c5a58b89ec\",\r\n        \"chargeTypes\": [\"FIXED\", \"TOTAL_BALANCE\"],\r\n        //\"status\": [\"APPROVED\", \"REJECTED\"],\r\n        \"createdAt\": {\r\n            \"from\": \"2026-03-01\",\r\n            \"to\": \"2026-03-10\"\r\n        }\r\n    },\r\n    \"pagination\": {\r\n        \"perPage\": 15,\r\n        \"currentPage\": 1\r\n    },\r\n    \"locale\": \"es_PR\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.placetopay.com/autopay/search",
+              "protocol": "https",
+              "host": [
+                "api",
+                "placetopay",
+                "com"
+              ],
+              "path": [
+                "autopay",
+                "search"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Tokenización",
+      "item": [
+        {
+          "name": "Tokenize",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"locale\": \"es_PR\",\r\n    \"buyer\": {\r\n        \"name\": \"Manuel\",\r\n        \"surname\": \"Marín\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\"\r\n    },\r\n    \"subscription\": {\r\n        \"reference\": \"Test {{$randomAlphaNumeric}}\",\r\n        \"description\": \"Tokenize test\"\r\n    },\r\n    \"expiration\": {{exp}},\r\n    \"returnUrl\": \"https://www.google.com/\",\r\n    \"ipAddress\": \"127.0.0.1\",\r\n    \"userAgent\": \"Postman Agent\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/session",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "session"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Tokenize Cuotas",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"auth\": {{auth}},\r\n   \"locale\": \"es_CL\",\r\n    \"buyer\": {\r\n      \"name\": \"Manuel\",\r\n      \"surname\": \"Marín\",\r\n      \"email\": \"inte.p2p.pruebas@gmail.com\",\r\n      \"document\": \"11.257.843-9\",\r\n      \"documentType\": \"CLRUT\",\r\n      \"mobile\": 3006108300\r\n  },\r\n\"subscription\": {\r\n\"reference\": \"Test {{$randomAlphaNumeric}}\",\r\n\"description\": \"Tokenize test\"\r\n},\r\n  \"expiration\": {{exp}},\r\n    \"returnUrl\": \"https://www.google.com/\",\r\n    \"ipAddress\": \"127.0.0.1\",\r\n    \"userAgent\": \"Postman Agent\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/session",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "session"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "getRequestInformation",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\": {{auth}}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/session/3542990",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "session",
+                "3542990"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TokenConsult",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\": {{auth}},\r\n  \"locale\": \"en_PR\",\r\n  \"instrument\": {\r\n        \"token\":{\r\n            //\"token\": \"ebfbebcf292e627f25b9899621b5c31ab085922bd92240b319c6bb67c5120a3d\"//card\r\n            \"token\":\"f4787ef82fe46d8c329bafad565cd8d6192f82649b455ea84c82f37609ebbeb2\"//ACH\r\n        }\r\n  }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/gateway/token",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "gateway",
+                "token"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "collect",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"instrument\": {\r\n        \"token\": {\r\n            \"token\": \"954270e8b3d5a87dd814f28d7529040fbeafcfa35de46905bceab8d5b46a7414\"\r\n        }\r\n    },\r\n    \"payer\": {\r\n        \"name\": \"Manuel\",\r\n        \"surname\": \"Marín\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\"\r\n    },\r\n    \"payment\": {\r\n        \"reference\": \"Collect_202601220819\",\r\n        \"description\": \"Collect test\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 10\r\n        }\r\n    },\r\n    \"fields\": [\r\n        {\r\n            \"keyword\": \"LLASubscriptionExternalId\",\r\n            \"value\": \"08885b5912d82d294dc43c8fd4697a1429ef0b805541255120\",\r\n            \"displayOn\": \"none\"\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/collect",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "collect"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "reversePayment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\": {{auth}},\r\n    \"internalReference\": \"918\"\r\n}"
+            },
+            "url": {
+              "raw": "https://cl-uat-checkout.placetopay.com/api/reverse",
+              "protocol": "https",
+              "host": [
+                "cl-uat-checkout",
+                "placetopay",
+                "com"
+              ],
+              "path": [
+                "api",
+                "reverse"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "InvalidToken",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"locale\": \"es_PR\",\r\n    \"instrument\": {\r\n        \"token\": {\r\n            \"token\": \"f1d8a078dd41a6867441cffba7011be5e11a7b9bfc69223a5f8a02dba647bd10\"\r\n        }\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/instrument/invalidate",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "instrument",
+                "invalidate"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "requests": {},
+        "exec": [
+          "var moment = require('moment');",
+          "var CryptoJS = require(\"crypto-js\");",
+          "var auth = {",
+          "    \"login\": pm.collectionVariables.get('login_test'),",
+          "    \"tranKey\": pm.collectionVariables.get('secretKey_test')",
+          "}",
+          "var nonce = Math.random().toString(36).substring(2);",
+          "var seed = moment().format()",
+          "hash = CryptoJS.SHA256(nonce + seed + auth.tranKey)",
+          "auth.tranKey = hash.toString(CryptoJS.enc.Base64)",
+          "auth.nonce = btoa(nonce)",
+          "auth.seed = seed",
+          "pm.collectionVariables.set('auth', JSON.stringify(auth))",
+          "",
+          "IdRondom = Math.floor(Math.random() * 1000000)",
+          "",
+          "var exp = moment().add(10, 'minutes')",
+          "pm.collectionVariables.set('exp', JSON.stringify(exp))",
+          "pm.collectionVariables.set('IdRondom', IdRondom.toString())",
+          "console.log(auth, exp)"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "url_test",
+      "value": ""
+    },
+    {
+      "key": "url_prod",
+      "value": ""
+    },
+    {
+      "key": "login",
+      "value": ""
+    },
+    {
+      "key": "secretKey",
+      "value": ""
+    },
+    {
+      "key": "auth",
+      "value": ""
+    },
+    {
+      "key": "exp",
+      "value": ""
+    },
+    {
+      "key": "IdRondom",
+      "value": ""
+    },
+    {
+      "key": "login_liberty",
+      "value": ""
+    },
+    {
+      "key": "secretKey_liberty",
+      "value": ""
+    },
+    {
+      "key": "login_claro",
+      "value": ""
+    },
+    {
+      "key": "secretKey_claro",
+      "value": ""
+    },
+    {
+      "key": "login_ebt",
+      "value": ""
+    },
+    {
+      "key": "secretKey_ebt",
+      "value": ""
+    },
+    {
+      "key": "login_hacienda",
+      "value": ""
+    },
+    {
+      "key": "secretKey_hacienda",
+      "value": ""
+    },
+    {
+      "key": "login_test",
+      "value": ""
+    },
+    {
+      "key": "secretKey_test",
+      "value": ""
+    },
+    {
+      "key": "login_postpaid",
+      "value": ""
+    },
+    {
+      "key": "secretKey_postpaid",
+      "value": ""
+    },
+    {
+      "key": "login_test2",
+      "value": ""
+    },
+    {
+      "key": "secretKey_test2",
+      "value": ""
+    }
+  ]
+}
