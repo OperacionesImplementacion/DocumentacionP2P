@@ -1,0 +1,1934 @@
+{
+  "info": {
+    "_postman_id": "6b551ee0-e0ec-46dd-8f8d-d3027a8e24b9",
+    "name": "API-Rest-PR (Github)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "14677298"
+  },
+  "item": [
+    {
+      "name": "Payment",
+      "item": [
+        {
+          "name": "Information",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\":{{auth}},\r\n    \"payer\": {\r\n        \"name\": \"Manuel\",\r\n        \"surname\": \"Marín\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\",\r\n        \"mobile\": \"3002002551\"\r\n  },\r\n  \"payment\": {\r\n    \"reference\": \"test-pse\",\r\n    \"description\": \"PaymentPSE\",\r\n    \"amount\": {\r\n      \"currency\": \"USD\",\r\n      \"total\": 10\r\n    }\r\n  },\r\n    \"instrument\": {\r\n        \"card\": {\r\n            \"number\": \"4111111111111111\",\r\n            \"cvv\":\"123\",\r\n            \"expiration\": \"10/27\"\r\n        }\r\n  },\r\n  \"locale\": \"en_PR\",\r\n  \"ipAddress\": \"127.0.0.1\",\r\n  \"userAgent\": \"Testing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_prod}}/gateway/information",
+              "host": [
+                "{{url_prod}}"
+              ],
+              "path": [
+                "gateway",
+                "information"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Process",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"locale\": \"es_PR\",\r\n    \"payer\": {\r\n        \"name\": \"Manuel\",\r\n        \"surname\": \"marin\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\",\r\n        \"mobile\": 3006108300\r\n    },\r\n    \"idempotenceKey\": \"123458\",\r\n    \"payment\": {\r\n        \"reference\": \"Test {{$randomAlphaNumeric}}\",\r\n        \"description\": \"test\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 1.23\r\n        }\r\n    },\r\n    \"notificationURL\": \"https://dnetix.co/ping/test8\",\r\n    \"instrument\": {\r\n        \"card\": {\r\n            \"number\": \"4110760000000008\",\r\n            \"CVV\": \"942\",\r\n            \"expiration\": \"12/27\"\r\n        }\r\n    },\r\n    \"additional\": {\r\n        \"CustomerAccountNumber\": \"MLG-101\"\r\n    },\r\n    \"ipAddress\": \"127.0.0.20\",\r\n    \"userAgent\": \"Testing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/process",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "process"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Process AVS",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"locale\": \"es_PR\",\r\n    \"payer\": {\r\n        \"name\": \"Manuel\",\r\n        \"surname\": \"Marin\",\r\n        \"email\": \"juan.munoz@placetopay.com\"\r\n    },\r\n      \"payment\": {\r\n        \"reference\": \"Test123\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 16\r\n        }\r\n    },\r\n    \"instrument\": {\r\n        //\"pin\": \"56CB951052169A72\",\r\n        \"card\": {\r\n            \"number\": \"2215714777972730\",\r\n            \"expiration\": \"12/28\",\r\n            \"address\": {\r\n                \"postalCode\": 55555\r\n            }\r\n        }\r\n    },\r\n    \"ipAddress\": \"127.0.0.1\",\r\n    \"userAgent\": \"Testing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/process",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "process"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Query",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\":{{auth}},\r\n  \"internalReference\": 1711245300\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_prod}}/gateway/query",
+              "host": [
+                "{{url_prod}}"
+              ],
+              "path": [
+                "gateway",
+                "query"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "reversePayment",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"internalReference\": \"1714063912\",\r\n    \"action\": \"reverse\"\r\n}\r\n",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/transaction",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "transaction"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"reference\": \"Test solid state\",\r\n    \"amount\": {\r\n        \"currency\": \"COP\",\r\n        \"total\": 0\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.test.goupagos.com.co/gateway/search",
+              "protocol": "https",
+              "host": [
+                "api",
+                "test",
+                "goupagos",
+                "com",
+                "co"
+              ],
+              "path": [
+                "gateway",
+                "search"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ACH Payment",
+      "item": [
+        {
+          "name": "Process",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"payer\": {\r\n        \"name\": \"Manuel\",\r\n        \"surname\": \"Marin\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\",\r\n        \"mobile\": 3006108300\r\n    },\r\n    \"payment\": {\r\n        \"reference\": \"Test_ach_2\",\r\n        \"description\": \"Pruebas \",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 3\r\n        }\r\n    },\r\n    \"instrument\": {\r\n       \"account\": {\r\n            \"bankCode\": \"021502011\",\r\n            \"bankName\": \"BANCO POPULAR DE PUERTO RICO (BPPR)\",\r\n            \"accountType\": \"DDA\",\r\n            \"accountNumber\": \"4111111111111111\",\r\n            \"franchise\": \"_021502011_\",\r\n            \"lastDigits\": \"1111\",\r\n            \"verificationCode\": \"eyJhbGciOiJSUzI1NiJ9.eyJhY2NvdW50SGFzaCI6IjdmM2JkMjkzNzM5ODFjM2JiM2UzNGFiNGJkMzRkYTFlOGZhMzE0YzMyZTdiOTQzMzY4M2MyYjJlYTkzZjliNmY0MmYzMTQ5YzA1YWI5ZDkyMjEwN2NlMTE2NzQ4ZThkYTE3ODM1YjM0NDljYzM5ZjJhY2E5YjQ4MzE0ZTFlMjQ2Iiwib25UZXN0Ijp0cnVlLCJzZXJ2aWNlIjoibW9jayIsImlkIjoyNTkxfQ.CSsx5I1d5aN8CgtSOKtGB--w2_OgmLTUZbXeK26PxPgTS3bgKAXKDuIjH4nOO5bAqw6yxYr-BgOGfZExxAwA5enKCQcBYGzI5-IR074LLjS_VcsFi16EHhPZMevZy9lczhtQPiVz3yGKQglLPtmGeYKmBCWL-6fAL0kHht-u0kK1AGG0wIC32hBF5muJm_pAt91t4kgDDkHT0cKrg5Py4g0MobYulrlssiweofqumFqu9Jk9sVZ9VGNG8vuv1i8QHqUUESIbVt1p3e-UBLf1e7QJXP96Pu3FRNCkQ7rHU6fK1J--MFxKuwMnUfqH0EOzzgiEmTd97qD00C0O-wLRJQ\"\r\n        }\r\n    },\r\n    \"ipAddress\": \"127.0.0.1\",\r\n    \"userAgent\": \"Testing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/process",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "process"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Tokenize",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"payer\": {\r\n        \"name\": \"Manuel\",\r\n        \"surname\": \"Marín\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\"\r\n    },\r\n    \"instrument\": {\r\n        \"account\": {\r\n            \"bankCode\": \"021502011\",\r\n            \"bankName\": \"BANCO POPULAR DE PUERTO RICO (BPPR)\",\r\n            \"accountType\": \"DDA\",\r\n            \"accountNumber\": \"4111111111111111\",\r\n            \"franchise\": \"_021502011_\",\r\n            \"lastDigits\": \"1111\",\r\n            \"verificationCode\": \"eyJhbGciOiJSUzI1NiJ9.eyJhY2NvdW50SGFzaCI6IjdmM2JkMjkzNzM5ODFjM2JiM2UzNGFiNGJkMzRkYTFlOGZhMzE0YzMyZTdiOTQzMzY4M2MyYjJlYTkzZjliNmY0MmYzMTQ5YzA1YWI5ZDkyMjEwN2NlMTE2NzQ4ZThkYTE3ODM1YjM0NDljYzM5ZjJhY2E5YjQ4MzE0ZTFlMjQ2Iiwib25UZXN0Ijp0cnVlLCJzZXJ2aWNlIjoibW9jayIsImlkIjoxOTg5fQ.GEAQUm619TRr61dzDtG_AVooXtXVrP3qMzYqrm-nvF12NVVhJKh_aqltD0GtFbdpg28oDLcVwn8DN_xwLo31PQPEmUisx68RdTgp2TzwZhFdFCTbKJHkln0_Wxy62a86IQdX_1eDsJMcvNePWTolQsykCAcoKzxrLnpC_tpwAveseN0OLm6Zuvxu52qoVlZLRXpxzKpBCB6DtvLDgF_wJSgjTv2CaPB1ERxq1hpZUgyvhQIIL8O45R2tXu2NKzsY_QQDlPmdy0vNbazukZbpCkkn1ZxgpnRqpZ9uSYFjUlqzOh0KDqF0mIY0RHSE9xdr2WA__LvPabA_PK-zuoC-SA\"\r\n        },\r\n        \"ipAddress\": \"127.0.0.1\",\r\n        \"userAgent\": \"Testing\"\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/tokenize",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "tokenize"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Query",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\":{{auth}},\r\n  \"internalReference\": 1671138143\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_prod}}/gateway/query",
+              "host": [
+                "{{url_prod}}"
+              ],
+              "path": [
+                "gateway",
+                "query"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Collect",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"payer\": {\r\n        \"name\": \"Manuel\",\r\n        \"surname\": \"Marin\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\"\r\n    },\r\n    \"payment\": {\r\n        \"reference\": \"Test {{$randomAlphaNumeric}}\",\r\n        \"description\": \"test collect\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 10\r\n        }\r\n    },\r\n    \"instrument\": {\r\n        \"card\": {\r\n            \"number\": \"\",\r\n            \"expiration\": \"\",\r\n            \"cvv\": \"\",\r\n            \"installments\": 0\r\n        },\r\n        \"token\": {\r\n            \"token\": \"fcd907bc4eeb536db885e66685b318d2adfe48bef66a7aaf4b211b612fdc6a95\"\r\n        },\r\n        \"ipAddress\": \"127.0.0.20\",\r\n        \"userAgent\": \"Testing\"\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/process",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "process"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"reference\": \"Test solid state\",\r\n    \"amount\": {\r\n        \"currency\": \"COP\",\r\n        \"total\": 0\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.test.goupagos.com.co/gateway/search",
+              "protocol": "https",
+              "host": [
+                "api",
+                "test",
+                "goupagos",
+                "com",
+                "co"
+              ],
+              "path": [
+                "gateway",
+                "search"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ACH Session",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"user\": {\r\n        \"name\": \"John\",\r\n        \"surname\": \"Doe\",\r\n        \"email\": \"john_doe@mail.com\"\r\n    },\r\n    \"returnUrl\": \"https://www.placetopay.com\",\r\n    \"locale\": \"es_PR\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/account-validator/session",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "account-validator",
+                "session"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ACH Query",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\":{{auth}},\r\n    \"locale\": \"es_PR\",\r\n    \"requestId\": \"a0533d90-1903-4738-ada2-97ad5040b36c\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/account-validator/query",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "account-validator",
+                "query"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ACH Validate",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\":{{auth}},\r\n    \"locale\": \"es_PR\",\r\n        \"instrument\": {\r\n          \"token\": {\r\n              \"token\": \"16ce71af5a8e0cd67d5414dd85a210d944f3d2adb04a0d34f2782bd19797d30b\"\r\n              //\"subtoken\": \"fakesubtoken00005\"\r\n          }\r\n        },\r\n        \"payment\": {\r\n          \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 10\r\n          }\r\n        }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/account-validator/validate",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "account-validator",
+                "validate"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ACH return",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\":{{auth}},\r\n    \"locale\": \"es_PR\",\r\n    \"filters\": {\r\n    \"startDate\": \"2025-01-07 14:59:34\",\r\n    \"endDate\": \"2025-02-03 14:59:34\",\r\n    \"type\": [\"CHARGEBACK\"]\r\n  },\r\n  \"callbackUrl\": \"https://dnetix.co/ping/report\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/report",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "report"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "ACH return query",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"id\": 4170\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/report/obtain",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "report",
+                "obtain"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Subscription",
+      "item": [
+        {
+          "name": "Information",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\":{{auth}},\r\n    \"payer\": {\r\n        \"name\": \"Manuel\",\r\n        \"surname\": \"Marín\",\r\n        \"documentType\": \"CC\",\r\n        \"document\": \"1234567890\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\",\r\n        \"mobile\": \"3002002551\"\r\n  },\r\n  \"suscription\": {\r\n    \"reference\": \"test-token\",\r\n    \"description\": \"token\"\r\n  },\r\n    \"instrument\": {\r\n        \"card\": {\r\n            \"number\": \"4111111111111111\",\r\n            \"cvv\":\"123\",\r\n            \"expiration\": \"10/27\"\r\n        }\r\n  },\r\n  \"locale\": \"es_PR\",\r\n  \"ipAddress\": \"127.0.0.1\",\r\n  \"userAgent\": \"Testing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/information",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "information"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Tokenize",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"payer\": {\r\n        \"name\": \"Manuel\",\r\n        \"surname\": \"Marín\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\",\r\n        \"mobile\": 3006108300\r\n    },\r\n    \"instrument\": {\r\n        \"card\": {\r\n            \"number\": \"4111111111111111\",\r\n            \"CVV\": \"123\",\r\n            \"expiration\": \"12/27\"\r\n        }\r\n        /*\"threeDS\": {\r\n            \"id\": 436417,\r\n            \"version\": \"v2x\",\r\n            \"enrolled\": \"Y\",\r\n            \"authenticated\": \"Y\",\r\n            \"eci\": \"05\",\r\n            \"cavv\": \"AAICBDNZhgAAAAAAAAJGdUeHIJE=\",\r\n            \"xid\": \"6363520e-c8c4-48a7-a26a-5fc904f42c38\",\r\n            \"extra\": {\r\n                \"transStatusReason\": null,\r\n                \"acsTransId\": \"0adaa75f-e23b-4ec6-a7a3-911e2dd2a77d\",\r\n                \"threeDSServerTransID\": \"879de711-2447-4a9b-9cb6-e7bf34198609\",\r\n                \"deviceChannel\": \"BRW\",\r\n                \"messageCategory\": \"NPA\",\r\n                \"authMethod\": \"CARDHOLDER_CHALLENGE_OCCURRED\",\r\n                \"authTimestamp\": \"2025-09-03T15:34:39+00:00\",\r\n                \"authInd\": \"ADD_CARD\",\r\n                \"challengeInd\": \"CHALLENGE_REQUESTED_MANDATE\"\r\n            },\r\n            \"validSignature\": true\r\n        }*/\r\n},\r\n\"ipAddress\": \"127.0.0.20\",\r\n\"userAgent\": \"Testing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/tokenize",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "tokenize"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "TokenRequestor(Collect)",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"locale\": \"es_PR\",\r\n    \"auth\": {{auth}},\r\n    \"payer\": {\r\n        \"name\": \"Manuel\",\r\n        \"email\": \"manuelmarin97@gmail.com\",\r\n        \"mobile\": \"3226665935\"\r\n    },\r\n    \"payment\": {\r\n        \"reference\": \"Test 202512041150\",\r\n        \"description\": \"Test\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 0.01\r\n        }\r\n    },\r\n    \"notificationURL\": \"https://dnetix.co/ping/test8\",\r\n    \"idempotenceKey\": \"Da1\",\r\n    \"instrument\": {\r\n        \"brandToken\": {\r\n            \"token\": \"4667850230535035\", //VISA\r\n            \"expiration\": \"09/29\",\r\n            /*\"token\": \"5530202198255184\",\r\n            \"expiration\": \"12/28\",*/\r\n            \"additional\": {\r\n                //\"cryptogram\": \"AMWo2Gk3p1XtAAE6fr3OAAADFA==\",\r\n                \"cryptogram\": \"/wAAAAAAPeZZs/YAmcdJg1IAAAA=\", //VISA\r\n                \"wallettype\": \"remoteCommerce\"\r\n            }\r\n        },\r\n        \"threeDS\": {\r\n            \"id\": 71955606,\r\n            \"enrolled\": \"Y\",\r\n            \"authenticated\": \"Y\",\r\n            \"validSignature\": true,\r\n            \"eci\": \"05\",\r\n            \"cavv\": \"AAkBApiRhQAAAAABhAM4dQAAAAA=\",\r\n            \"xid\": \"5a1cbff7-2989-4848-81a4-84c1a76fc283\",\r\n            \"version\": \"v2\",\r\n            \"extra\": {\r\n                \"transStatusReason\": null,\r\n                \"acsTransId\": \"f530751b-d697-4cb4-99e0-5397b98ce840\",\r\n                \"threeDSServerTransID\": \"7f7e4d6b-51d3-4507-b75e-1649c9e41445\"\r\n            }\r\n        }\r\n    },\r\n    \"additional\": {\r\n        \"CustomerAccountNumber\": \"08885b5912d82d294dc43c8fd4697a1429ef0b805541255120\"\r\n        //    \"another_key\": \"test\"\r\n    },\r\n    \"ipAddress\": \"190.85.90.130\",\r\n    \"userAgent\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_prod}}/gateway/process",
+              "host": [
+                "{{url_prod}}"
+              ],
+              "path": [
+                "gateway",
+                "process"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Tokenize ACH",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"payer\": {\r\n        \"name\": \"Test\",\r\n        \"surname\": \"Test\",\r\n        \"email\": \"pruebasp2p.juanserna@gmail.com\",\r\n        \"mobile\": 3006108300\r\n    },\r\n    \"instrument\": {\r\n        \"account\": {\r\n            \"bankCode\": \"021502011\",\r\n            \"bankName\": \"BANCO POPULAR DE PUERTO RICO (BPPR)\",\r\n            \"accountType\": \"DDA\",\r\n            \"accountNumber\": \"4111111111111111\",\r\n            \"franchise\": \"_021502011_\",\r\n            \"verificationCode\": \"eyJhbGciOiJSUzI1NiJ9.eyJhY2NvdW50SGFzaCI6IjZmODk2MjExOTMyMmRlZDZmZDBlODAwNGRlNzlkMzc1OTZiZDQyZjdkYzQ3MzViOWUzNWM2ODk5NDQ0NDA5OWRkMjQzMWE1YWY3MjJiYzQ3N2E1N2MyNjRmMWUzNGM5M2RkZGU0ZTZmMWExOTI2Mjk1NzAwNGRlMWQ4M2Q4NWQyIiwib25UZXN0IjpmYWxzZSwic2VydmljZSI6InBybWxjIiwiaWQiOjUwOH0.XsozsrA-ztlyMJaQDUu6Dqbk1H54DDQULps4nWeyiquK-8hgJXdI7uQ__Bs503j8d9VwbzVc7ba6Q-r8mUn7f5RHcG4eTUaYDhhOcG5MALQjWbPRM2X6UYNhUIs0QGKCJXSHO-T9jPm7f-LDyAll3D_FIDaBiFpB9cuIle1h5dUWpRH2JhxbbUUmmwTO3SGq5hBPyCDJ6aabKiSiFKj8jGbkjlmJY_O6Ob5G1hUSfdGTrq1iUUREDbI6rWhhKEYry91ypIKSOOy3PilfY-x8It1a-RXYewZbkpVPQUZA7BYVtfCnbMJiJAB1xgSuSStVLLOz5vZWDa-E158maCmJkA\"\r\n        }\r\n    },\r\n    \"ipAddress\": \"127.0.0.1\",\r\n    \"userAgent\": \"Testing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_prod}}/gateway/tokenize",
+              "host": [
+                "{{url_prod}}"
+              ],
+              "path": [
+                "gateway",
+                "tokenize"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Collect",
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {}
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "XML",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"locale\": \"es_PR\",\r\n    \"payer\": {\r\n        \"name\": \"test\",\r\n        \"surname\": \"Urrego\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\",\r\n        \"mobile\": 3006108300\r\n    },\r\n    \"payment\": {\r\n        \"reference\": \"0:1:31:42\",\r\n        \"description\": \"test collect\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 10\r\n        }\r\n    },\r\n    \"instrument\": {\r\n        \"token\": {\r\n            \"token\": \"cffe079cb3616c3ceb7c7c7f297abe090b542ce7b85a610d475e4ad6a96d4995\"\r\n        }\r\n    },\r\n    \"ipAddress\": \"127.0.0.20\",\r\n    \"userAgent\": \"Testing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/process",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "process"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Recurring",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"locale\": \"es_PR\",\r\n    \"payer\": {\r\n        \"name\": \"test\",\r\n        \"surname\": \"Urrego\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\",\r\n        \"mobile\": 3006108300\r\n    },\r\n    \"payment\": {\r\n        \"reference\": \"Test {{$randomAlphaNumeric}}\",\r\n        \"description\": \"test collect\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 10\r\n        },\r\n        \"recurring\": {\r\n            \"periodicity\": \"D\",\r\n            \"interval\": 7,\r\n            \"maxPeriods\": 4,\r\n            \"notificationUrl\": \"https://dnetix.co/ping/test8\"\r\n        }\r\n    },\r\n    \"instrument\": {\r\n        \"token\": {\r\n            \"token\": \"0259a0af6df70fccb5a6e0aae803be5579d394c4b61a6c6070d13433bf995e6f\"\r\n        }\r\n    },\r\n    \"ipAddress\": \"127.0.0.20\",\r\n    \"userAgent\": \"Testing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/process",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "process"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Query",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\":{{auth}},\r\n  \"internalReference\": 31558\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.test.goupagos.com.co/gateway/query",
+              "protocol": "https",
+              "host": [
+                "api",
+                "test",
+                "goupagos",
+                "com",
+                "co"
+              ],
+              "path": [
+                "gateway",
+                "query"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"reference\": \"Test solid state\",\r\n    \"amount\": {\r\n        \"currency\": \"COP\",\r\n        \"total\": 0\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.test.goupagos.com.co/gateway/search",
+              "protocol": "https",
+              "host": [
+                "api",
+                "test",
+                "goupagos",
+                "com",
+                "co"
+              ],
+              "path": [
+                "gateway",
+                "search"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GetToken",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\":{{auth}},\r\n    \"locale\":\"es_PR\",\r\n    \"instrument\": {\r\n        \"token\":{\r\n            //\"token\":\"18e51da2814e0c717c1df2ae6c79c2539b2cf0624ce760c4088798e84b5bba8b\"//Card\r\n            \"token\":\"f4787ef82fe46d8c329bafad565cd8d6192f82649b455ea84c82f37609ebbeb2\"//ACH\r\n        }\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/token",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "token"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Invalidate",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\":{{auth}},\r\n    \"locale\":\"es_PR\",\r\n    \"instrument\":{\r\n        \"token\":{\r\n            \"token\":\"dbe291beb5130ae038aedfcaa07b649dafec7afbb258c23d2c8567cb9d69d12f\"\r\n        }\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/invalidate",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "invalidate"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Link de pagos",
+      "item": [
+        {
+          "name": "Create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"locale\": \"es_PR\",\r\n    \"name\": \"Prueba\",\r\n    \"paymentsAllowed\": 1,\r\n    \"expirationDate\": \"2026-04-20 09:40:50\",\r\n    \"paymentExpiration\": 15,\r\n    \"notificationUrl\": \"https://dnetix.co/ping/test8\",\r\n    \"payment\": {\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 10\r\n        }\r\n    },\r\n    \"reference\": \"test\",\r\n    \"description\": \"Pago test\",\r\n    //\"paymentMethod\": [\"visa\"],\r\n    \"receiverEmails\": [\r\n        \"inte.p2p.pruebas@gmail.com\",\r\n        \"test@placetopay.com\"\r\n    ],\r\n    \"additional\": [\r\n        /*{\r\n            \"keyword\": \"CustomerAccountNumber\",\r\n            \"value\": \"ABCD123\",\r\n            \"displayOn\": \"both\"\r\n        },*/\r\n        {\r\n            \"keyword\": \"buyer_name\",\r\n            \"value\": \"Test\",\r\n            \"displayOn\": \"none\"\r\n        },\r\n        {\r\n            \"keyword\": \"buyer_email\",\r\n            \"value\": \"Test@test.com\",\r\n            \"displayOn\": \"none\"\r\n        }\r\n    ]\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://sites-test.placetopay.com/api/payment-link",
+              "protocol": "https",
+              "host": [
+                "sites-test",
+                "placetopay",
+                "com"
+              ],
+              "path": [
+                "api",
+                "payment-link"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Consult",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\":{{auth}}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://sites-test.placetopay.com/api/payment-link/798036",
+              "protocol": "https",
+              "host": [
+                "sites-test",
+                "placetopay",
+                "com"
+              ],
+              "path": [
+                "api",
+                "payment-link",
+                "798036"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "inactive",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\":{{auth}}\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://sites-test.placetopay.com/api/payment-link/disable/18386",
+              "protocol": "https",
+              "host": [
+                "sites-test",
+                "placetopay",
+                "com"
+              ],
+              "path": [
+                "api",
+                "payment-link",
+                "disable",
+                "18386"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "3DS Payment",
+      "item": [
+        {
+          "name": "Information",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\":{{auth}},\r\n    \"payer\": {\r\n        \"name\": \"Manuel\",\r\n        \"surname\": \"Marín\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\",\r\n        \"mobile\": \"3002002551\"\r\n  },\r\n  \"payment\": {\r\n    \"reference\": \"test {{$randomAlphaNumeric}}\",\r\n    \"description\": \"Test\",\r\n    \"amount\": {\r\n      \"currency\": \"USD\",\r\n      \"total\": 10\r\n    }\r\n  },\r\n    \"instrument\": {\r\n        \"card\": {\r\n            \"number\": \"376651552907400\",\r\n            \"cvv\":\"123\",\r\n            \"expiration\": \"10/27\"\r\n        }\r\n  },\r\n  \"locale\": \"es_CO\",\r\n  \"ipAddress\": \"127.0.0.1\",\r\n  \"userAgent\": \"Testing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/information",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "information"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Process",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"payer\": {\r\n        \"name\": \"test\",\r\n        \"surname\": \"Urrego\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\",\r\n        \"mobile\": 3006108300\r\n    },\r\n    \"payment\": {\r\n        \"reference\": \"Test {{$randomAlphaNumeric}}\",\r\n        \"description\": \"test PR with 3DS\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 10\r\n        }\r\n    },\r\n    \"instrument\": {\r\n        \"card\": {\r\n            \"number\": \"4110760000000008\",\r\n            \"CVV\": \"123\",\r\n            \"expiration\": \"12/27\"\r\n        },\r\n        \"threeDS\": {\r\n            \"id\": \"443361\",\r\n            \"enrolled\": \"Y\",\r\n            \"authenticated\": \"Y\",\r\n            \"validSignature\": true,\r\n            \"eci\": \"05\",\r\n            \"cavv\": \"AAICBAkTCQAAAAPohAMVdSKHUIA=\",\r\n            \"xid\": \"790b23b8-fb5c-4ea6-8c90-7dabbb57feda\",\r\n            \"version\": \"v2\",\r\n            \"extra\": {\r\n                \"transStatusReason\": null,\r\n                \"acsTransId\": \"5de48908-f673-42a3-8296-a760f6ccddbf\",\r\n                \"threeDSServerTransID\": \"084b18fb-3e47-4af7-8f19-b435b5fa2767\"\r\n            }\r\n        }\r\n    },\r\n    \"ipAddress\": \"127.0.0.20\",\r\n    \"userAgent\": \"Testing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/process",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "process"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Process 3RI",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"payer\": {\r\n        \"name\": \"test\",\r\n        \"surname\": \"Urrego\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\",\r\n        \"mobile\": 3006108300\r\n    },\r\n    \"payment\": {\r\n        \"reference\": \"Test {{$randomAlphaNumeric}}\",\r\n        \"description\": \"test PR with 3DS\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 10\r\n        }\r\n    },\r\n    \"instrument\": {\r\n        \"token\": {\r\n            \"token\": \"\"\r\n        },\r\n        \"threeDS\": {\r\n            \"id\": \"443361\",\r\n            \"enrolled\": \"Y\",\r\n            \"authenticated\": \"Y\",\r\n            \"validSignature\": true,\r\n            \"eci\": \"05\",\r\n            \"cavv\": \"AAICBAkTCQAAAAPohAMVdSKHUIA=\",\r\n            \"xid\": \"790b23b8-fb5c-4ea6-8c90-7dabbb57feda\",\r\n            \"version\": \"v2\",\r\n            \"extra\": {\r\n                \"transStatusReason\": null,\r\n                \"acsTransId\": \"5de48908-f673-42a3-8296-a760f6ccddbf\",\r\n                \"threeDSServerTransID\": \"084b18fb-3e47-4af7-8f19-b435b5fa2767\"\r\n            }\r\n        }\r\n    },\r\n    \"ipAddress\": \"127.0.0.20\",\r\n    \"userAgent\": \"Testing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/process",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "process"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Query",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\":{{auth}},\r\n  \"internalReference\": 31558\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.test.goupagos.com.co/gateway/query",
+              "protocol": "https",
+              "host": [
+                "api",
+                "test",
+                "goupagos",
+                "com",
+                "co"
+              ],
+              "path": [
+                "gateway",
+                "query"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"reference\": \"Test solid state\",\r\n    \"amount\": {\r\n        \"currency\": \"COP\",\r\n        \"total\": 0\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.test.goupagos.com.co/gateway/search",
+              "protocol": "https",
+              "host": [
+                "api",
+                "test",
+                "goupagos",
+                "com",
+                "co"
+              ],
+              "path": [
+                "gateway",
+                "search"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Pinpad Payment",
+      "item": [
+        {
+          "name": "Information",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\":{{auth}},\r\n    \"payer\": {\r\n        \"name\": \"Manuel\",\r\n        \"surname\": \"Marín\",\r\n        \"documentType\": \"CC\",\r\n        \"document\": \"1234567890\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\",\r\n        \"mobile\": \"3002002551\"\r\n  },\r\n  \"payment\": {\r\n    \"reference\": \"test-pse\",\r\n    \"description\": \"Payment_test\",\r\n    \"amount\": {\r\n      \"currency\": \"COP\",\r\n      \"total\": 1000\r\n    }\r\n  },\r\n    \"instrument\": {\r\n        \"card\": {\r\n            \"number\": \"0215020177972730\",\r\n            \"cvv\":\"123\",\r\n            \"expiration\": \"10/27\"\r\n        }\r\n  },\r\n  \"locale\": \"es_CO\",\r\n  \"ipAddress\": \"127.0.0.1\",\r\n  \"userAgent\": \"Testing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/information",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "information"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PinPad",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\":{{auth}},\r\n    \"instrument\": {\r\n        \"card\": {\r\n            \"number\": \"0215020177972730\",\r\n            \"cvv\":\"123\",\r\n            \"expiration\": \"10/27\"\r\n        }\r\n  },\r\n  \"locale\": \"es_PR\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/security/pinpad/transaction",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "security",
+                "pinpad",
+                "transaction"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PinBlock",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"instrument\": {\r\n        \"card\": {\r\n            \"number\": \"0215020177972730\"\r\n        },\r\n        \"pinPad\": {\r\n            \"transactionId\": \"69b46e5cec15e\",\r\n            \"positions\": \"4589167032\"\r\n        }\r\n    },\r\n    \"locale\": \"es_PR\",\r\n    \"ipAddress\": \"127.0.0.1\",\r\n    \"userAgent\": \"Testing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/security/pinpad/pinblock",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "security",
+                "pinpad",
+                "pinblock"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Process",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"payer\": {\r\n        \"name\": \"test\",\r\n        \"surname\": \"test\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\",\r\n        \"mobile\": 3006108300\r\n    },\r\n    \"payment\": {\r\n        \"reference\": \"Test {{$randomAlphaNumeric}}\",\r\n        \"description\": \"test pinpad\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 20\r\n        }\r\n    },\r\n    \"instrument\": {\r\n        \"pin\": \"41BB9638AC561745\",\r\n        \"card\": {\r\n            \"number\": \"0215020177972730\",\r\n            \"CVV\": \"942\",\r\n            \"expiration\": \"12/26\"\r\n        }\r\n    },\r\n    \"ipAddress\": \"127.0.0.20\",\r\n    \"userAgent\": \"Testing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/process",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "process"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Query",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\":{{auth}},\r\n  \"internalReference\": 31558\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.test.goupagos.com.co/gateway/query",
+              "protocol": "https",
+              "host": [
+                "api",
+                "test",
+                "goupagos",
+                "com",
+                "co"
+              ],
+              "path": [
+                "gateway",
+                "query"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"reference\": \"Test solid state\",\r\n    \"amount\": {\r\n        \"currency\": \"COP\",\r\n        \"total\": 0\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.test.goupagos.com.co/gateway/search",
+              "protocol": "https",
+              "host": [
+                "api",
+                "test",
+                "goupagos",
+                "com",
+                "co"
+              ],
+              "path": [
+                "gateway",
+                "search"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Kount Payment",
+      "item": [
+        {
+          "name": "Information",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\":{{auth}},\r\n    \"payer\": {\r\n        \"name\": \"Manuel\",\r\n        \"surname\": \"Marín\",\r\n        \"documentType\": \"CC\",\r\n        \"document\": \"1234567890\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\",\r\n        \"mobile\": \"3002002551\"\r\n  },\r\n  \"payment\": {\r\n    \"reference\": \"test-pse\",\r\n    \"description\": \"PaymentPSE\",\r\n    \"amount\": {\r\n      \"currency\": \"COP\",\r\n      \"total\": 1000\r\n    }\r\n  },\r\n    \"instrument\": {\r\n        \"card\": {\r\n            \"number\": \"4111111111111111\",\r\n            \"cvv\":\"123\",\r\n            \"expiration\": \"10/27\"\r\n        }\r\n  },\r\n  \"locale\": \"es_CO\",\r\n  \"ipAddress\": \"127.0.0.1\",\r\n  \"userAgent\": \"Testing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/information",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "information"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Process",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"payer\": {\r\n        \"name\": \"test\",\r\n        \"surname\": \"Urrego\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\",\r\n        \"mobile\": 3006108300\r\n    },\r\n    \"payment\": {\r\n        \"reference\": \"Test {{$randomAlphaNumeric}}\",\r\n        \"description\": \"test Kount\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 2\r\n        }\r\n    },\r\n    \"instrument\": {\r\n        \"card\": {\r\n            \"number\": \"5180300000000005\",\r\n            \"CVV\": \"942\",\r\n            \"expiration\": \"12/25\",\r\n            \"installments\": \"2\"\r\n        },\r\n        \"kount\": {\r\n            \"session\": \"5d93c02cfa014683bcead282e2fd4701\"\r\n        }\r\n    },\r\n    \"ipAddress\": \"127.0.0.20\",\r\n    \"userAgent\": \"Testing\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/process",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "process"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Query",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"auth\":{{auth}},\r\n  \"internalReference\": 31558\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.test.goupagos.com.co/gateway/query",
+              "protocol": "https",
+              "host": [
+                "api",
+                "test",
+                "goupagos",
+                "com",
+                "co"
+              ],
+              "path": [
+                "gateway",
+                "query"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Search",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"reference\": \"Test solid state\",\r\n    \"amount\": {\r\n        \"currency\": \"COP\",\r\n        \"total\": 0\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://api.test.goupagos.com.co/gateway/search",
+              "protocol": "https",
+              "host": [
+                "api",
+                "test",
+                "goupagos",
+                "com",
+                "co"
+              ],
+              "path": [
+                "gateway",
+                "search"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "3DS",
+      "item": [
+        {
+          "name": "lookup",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"payment\": {\r\n        \"reference\": \"Test {{$randomAlphaNumeric}}\",\r\n        \"description\": \"Testing Payment\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 10\r\n        }\r\n    },\r\n    \"payer\": {\r\n        \"name\": \"payer name\",\r\n        \"surname\": \"payer surname\",\r\n        \"email\": \"email@payer.com\",\r\n        \"mobile\": \"+573111111111\"\r\n    },\r\n    \"instrument\": {\r\n        \"card\": {\r\n            \"number\": \"4111111111111111\",\r\n            \"expiration\": \"12/27\",\r\n            \"cvv\": \"123\"\r\n        }\r\n    },\r\n    \"returnUrl\": \"https://dnetix.co/p2p/client\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/mpi/lookup",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "mpi",
+                "lookup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "lookup 3RI",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"payment\": {\r\n        \"reference\": \"Test {{$randomAlphaNumeric}}\",\r\n        \"description\": \"Testing Payment\"\r\n    },\r\n    \"instrument\": {\r\n        \"card\": {\r\n            \"number\": \"4111111111111111\",\r\n            \"expiration\": \"12/27\",\r\n            \"cvv\": \"123\"\r\n        }\r\n    },\r\n    \"version\": \"v2x\",\r\n    \"returnUrl\": \"https://dnetix.co/p2p/client\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/mpi/lookup",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "mpi",
+                "lookup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "lookup NPA",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"subscription\": {\r\n        \"reference\": \"Test {{$randomAlphaNumeric}}\",\r\n        \"description\": \"Testing Payment\"\r\n    },\r\n    \"instrument\": {\r\n        \"card\": {\r\n            \"number\": \"4111111111111111\",\r\n            \"expiration\": \"12/27\",\r\n            \"cvv\": \"123\"\r\n        }\r\n    },\r\n    \"returnUrl\": \"https://dnetix.co/p2p/client\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/mpi/lookup",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "mpi",
+                "lookup"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Query",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"instrument\": {\r\n        \"card\": {\r\n            \"number\": \"4111111111111111\",\r\n            \"expiration\": \"12/27\",\r\n            \"cvv\": \"123\"\r\n        }\r\n    },\r\n    \"id\": 453658\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/mpi/query",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "mpi",
+                "query"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Trx Operation",
+      "item": [
+        {
+          "name": "refund",
+          "protocolProfileBehavior": {
+            "disabledSystemHeaders": {}
+          },
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"locale\": \"es_PR\",\r\n    \"internalReference\": 1682970879,\r\n    \"authorization\": \"!$%&/\",\r\n    \"action\": \"refund\"\r\n    /*    \"amount\": {\r\n        \"currency\": \"USD\",\r\n        \"total\": 0\r\n    }*/\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/transaction",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "transaction"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "reverse",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"internalReference\": 3570593,\r\n    \"authorization\": \"336827\",\r\n    \"action\": \"reverse\",\r\n    \"amount\": {\r\n        \"currency\": \"USD\",\r\n        \"total\": 100\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/transaction",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "transaction"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Preauthorizatin",
+      "item": [
+        {
+          "name": "Checkin",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"payer\": {\r\n        \"name\": \"Diego Esteban\",\r\n        \"surname\": \"Serna Upegui\",\r\n        \"email\": \"inte.p2p.pruebas@evertecinc.com\"\r\n    },\r\n    \"action\": \"checkin\",\r\n    \"payment\": {\r\n        \"reference\": \"Test_checkin {{$randomAlphaNumeric}}\",\r\n        \"description\": \"Checkin.\",\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 2\r\n        }\r\n    },\r\n    \"instrument\": {\r\n        \"card\": {\r\n            \"number\": \"4111111111111111\",\r\n            \"expiration\": \"01/29\",\r\n            \"cvv\": \"669\"\r\n        }\r\n    },\r\n    \"ipAddress\": \"190.85.90.130\",\r\n    \"userAgent\": \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.212 Safari/537.36\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/process",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "process"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Checkout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"internalReference\": 1737527611,\r\n    \"authorization\": \"292795\",\r\n    \"payment\": {\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 1.90999984741211\r\n        }\r\n    },\r\n        \"action\": \"checkout\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/gateway/transaction",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "gateway",
+                "transaction"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reautorización",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\":{{auth}},\r\n    \"internalReference\": 14103,\r\n    \"amount\": {\r\n        \"currency\": \"CLP\",\r\n        \"total\": \"3000\"\r\n    },\r\n    \"action\": \"reauthorization\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/api/transaction",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "api",
+                "transaction"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "reverse",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"internalReference\": 1737527611,\r\n    \"authorization\": \"292795\",\r\n    \"action\": \"reverse\",\r\n    \"amount\": {\r\n        \"currency\": \"USD\",\r\n        \"total\": 1.91\r\n    }\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_prod}}/gateway/transaction",
+              "host": [
+                "{{url_prod}}"
+              ],
+              "path": [
+                "gateway",
+                "transaction"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "PinPad API",
+      "item": [
+        {
+          "name": "create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "69|4RKTyrp74Dd7lKCxXrkBiLaID7SpBq5oxjlQVXrt",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "pinLength",
+                "value": "4",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"pinlength\": 4\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://pinpad-dev.placetopay.ws/api/transaction",
+              "protocol": "https",
+              "host": [
+                "pinpad-dev",
+                "placetopay",
+                "ws"
+              ],
+              "path": [
+                "api",
+                "transaction"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "generate Pinblock",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "856|OykXXgYsxvmhQDpkBa726HJIjWZm0mK4GUfYVOko",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "pan",
+                "value": "4111111111111111",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "pin",
+                "value": "5454",
+                "type": "text",
+                "disabled": true
+              },
+              {
+                "key": "format",
+                "value": "0",
+                "type": "text",
+                "disabled": true
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"pan\": \"123456789123\",\r\n    \"pin\": \"4556\",\r\n    \"format\": 0\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://pinpad.placetopay.com/api/pinblock-generator/e347b80f-38a3-4ff1-b06e-64d00c02fd29",
+              "protocol": "https",
+              "host": [
+                "pinpad",
+                "placetopay",
+                "com"
+              ],
+              "path": [
+                "api",
+                "pinblock-generator",
+                "e347b80f-38a3-4ff1-b06e-64d00c02fd29"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Account Validator",
+      "item": [
+        {
+          "name": "create",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\":{{auth}},\r\n    \"user\": {\r\n        \"name\": \"Manuel\",\r\n        \"surname\": \"Marín\",\r\n        \"email\": \"inte.p2p.pruebas@gmail.com\"\r\n    },\r\n    \"returnUrl\": \"https://www.placetopay.com\",\r\n    \"locale\": \"es_PR\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://account-validator-test.placetopay.com/api/verification/session",
+              "protocol": "https",
+              "host": [
+                "account-validator-test",
+                "placetopay",
+                "com"
+              ],
+              "path": [
+                "api",
+                "verification",
+                "session"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "query",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\":{{auth}},\r\n    \"requestId\": \"a0537c8a-a8b7-4b29-9dbe-859d38e3e4c7\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "https://account-validator-test.placetopay.com/api/verification/query",
+              "protocol": "https",
+              "host": [
+                "account-validator-test",
+                "placetopay",
+                "com"
+              ],
+              "path": [
+                "api",
+                "verification",
+                "query"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Autopay",
+      "item": [
+        {
+          "name": "Autopay",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"auth\": {{auth}},\r\n    \"locale\": \"es_PR\",\r\n    \"type\": \"autopay\",\r\n    \"autopay\": {\r\n        \"action\": \"CREATE\",\r\n        \"reference\": \"12345\",\r\n        \"description\": \"Inscripción autopago monto fijo\",\r\n        \"dueDay\": 15,\r\n        \"recurring\": {\r\n            \"type\": \"FIXED\",\r\n            \"periodicity\": \"M\",\r\n            \"interval\": \"1\",\r\n            \"maxPeriods\": 12,\r\n            \"startDate\": \"2026-11-26\",\r\n            \"nextPayment\": \"2026-12-05\",\r\n            \"dueDate\": \"2027-11-26\",\r\n            \"notificationUrl\": \"https://merchant.test/notification\",\r\n        },\r\n        \"amount\": {\r\n            \"currency\": \"USD\",\r\n            \"total\": 10\r\n        }\r\n    },\r\n    \"returnUrl\": \"https://merchant.test/return\",\r\n    \"ipAddress\": \"127.0.0.1\",\r\n    \"userAgent\": \"PlacetoPay Sandbox\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{url_test}}/autopay/session",
+              "host": [
+                "{{url_test}}"
+              ],
+              "path": [
+                "autopay",
+                "session"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          "var moment = require('moment');\r",
+          "\r",
+          "var CryptoJS = require(\"crypto-js\");\r",
+          "\r",
+          "var auth = {\r",
+          "\r",
+          "    \"login\": pm.collectionVariables.get('login_kora'),\r",
+          "    \"tranKey\": pm.collectionVariables.get('secretKey_kora')\r",
+          "};\r",
+          "\r",
+          "var nonce = Math.random().toString(36).substring(2);\r",
+          "\r",
+          "var seed = moment().format();\r",
+          "\r",
+          "hash = CryptoJS.SHA256(nonce + seed + auth.tranKey);\r",
+          "\r",
+          "auth.tranKey = hash.toString(CryptoJS.enc.Base64);\r",
+          "\r",
+          "auth.nonce = btoa(nonce);\r",
+          "\r",
+          "auth.seed = seed;\r",
+          "\r",
+          "pm.environment.set('auth', JSON.stringify(auth));\r",
+          "\r",
+          "console.log(auth);"
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "login_aria",
+      "value": ""
+    },
+    {
+      "key": "secretKey_aria",
+      "value": ""
+    },
+    {
+      "key": "url_test",
+      "value": ""
+    },
+    {
+      "key": "url_prod",
+      "value": ""
+    },
+    {
+      "key": "login",
+      "value": ""
+    },
+    {
+      "key": "secretKey",
+      "value": ""
+    },
+    {
+      "key": "login_claro",
+      "value": ""
+    },
+    {
+      "key": "secretKey_claro",
+      "value": ""
+    },
+    {
+      "key": "login_Matrix",
+      "value": ""
+    },
+    {
+      "key": "secretKey_Matrix",
+      "value": ""
+    },
+    {
+      "key": "login_3RI",
+      "value": ""
+    },
+    {
+      "key": "secretKey_3RI",
+      "value": ""
+    },
+    {
+      "key": "login_test",
+      "value": ""
+    },
+    {
+      "key": "secretKey_test",
+      "value": ""
+    },
+    {
+      "key": "login_metropistas",
+      "value": ""
+    },
+    {
+      "key": "secretKey_metropistas",
+      "value": ""
+    },
+    {
+      "key": "login_kora",
+      "value": ""
+    },
+    {
+      "key": "secretKey_kora",
+      "value": ""
+    }
+  ]
+}
